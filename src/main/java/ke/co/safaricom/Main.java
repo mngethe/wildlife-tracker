@@ -11,14 +11,13 @@ import java.util.Map;
 import static spark.Spark.*;
 
 
-public class Main {
+public class    Main {
     public static void main(String[] args) {
+        staticFileLocation("/public");
         get("/",(request, response) ->{
             return "Wildlife tracker";
         });
 
-        staticFileLocation("/public");
-        String layout = "templates/layout.html";
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "index.html");
@@ -30,7 +29,19 @@ public class Main {
             model.put("endangeredAnimals", EndangeredAnimal.all());
             model.put("sightings", Sighting.all());
             model.put("template", "templates/index.html");
-            return new ModelAndView(model, layout);
+            return new ModelAndView(model, "animal.html");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model, "animal-form.html");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model, "endangeredanimal.html");
         }, new HandlebarsTemplateEngine());
 
         post("/endangered_sighting", (request, response) -> {

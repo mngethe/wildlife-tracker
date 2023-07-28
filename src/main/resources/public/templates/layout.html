@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link rel='stylesheet' href="/app.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>
+        {{#block "title"}}
+
+        {{/block}}
+    </title>
 </head>
 <body>
-<div class="container">
+<div class="nav-bar">
+    {{#block "nav-bar"}}
 
-    #parse( $template )
+    {{/block}}
+</div>
 
+<div class="content">
+    {{#block "content"}}
+    {{/block}}
+</div>
+
+<div class="footer">
+    {{#block "footer"}}
+    {{/block}}
 </div>
 </body>
 </html>
