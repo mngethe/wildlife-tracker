@@ -30,7 +30,6 @@ public class    Main {
             return new ModelAndView(model, "animal.html");
         }, new HandlebarsTemplateEngine());
 
-
         get("/login", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "animal-form.html");
