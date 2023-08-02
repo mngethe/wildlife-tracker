@@ -14,9 +14,7 @@ import static spark.Spark.*;
 public class    Main {
     public static void main(String[] args) {
         staticFileLocation("/public");
-        get("/",(request, response) ->{
-            return "Wildlife tracker";
-        });
+
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
@@ -33,7 +31,7 @@ public class    Main {
         }, new HandlebarsTemplateEngine());
 
 
-        get("/", (request, response) -> {
+        get("/login", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "animal-form.html");
         }, new HandlebarsTemplateEngine());
@@ -43,6 +41,8 @@ public class    Main {
             Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "endangeredanimal.html");
         }, new HandlebarsTemplateEngine());
+
+
 
         post("/endangered_sighting", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
